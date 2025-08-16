@@ -1,0 +1,18 @@
+class Solution {
+  public:
+    Node* intersectPoint(Node* head1, Node* head2) {
+        if (!head1 || !head2) return NULL;
+        
+        Node* p1 = head1;
+        Node* p2 = head2;
+        
+        // Loop until they meet
+        while (p1 != p2) {
+            // Move to next, or switch to the other list
+            p1 = (p1 == NULL) ? head2 : p1->next;
+            p2 = (p2 == NULL) ? head1 : p2->next;
+        }
+        
+        return p1; // Intersection point
+    }
+};
