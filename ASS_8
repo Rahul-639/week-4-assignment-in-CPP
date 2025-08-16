@@ -1,0 +1,35 @@
+/*class Solution {
+  public:
+    Node* pairWiseSwap(Node* head) {
+        // If list has 0 or 1 nodes, no swap needed
+        if (!head || !head->next) 
+            return head;
+        
+        // New head will be the second node after first swap
+        Node* newHead = head->next;
+        
+        Node* prev = NULL;
+        Node* curr = head;
+        
+        while (curr && curr->next) {
+            Node* first = curr;
+            Node* second = curr->next;
+            
+            // Swapping
+            first->next = second->next;
+            second->next = first;
+            
+            // Connect previous swapped pair to current
+            if (prev != NULL)
+                prev->next = second;
+            
+            // Update prev to last node of current pair
+            prev = first;
+            
+            // Move to next pair
+            curr = first->next;
+        }
+        
+        return newHead;
+    }
+};
